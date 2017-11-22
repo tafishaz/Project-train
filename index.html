@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script type="text/javascript">
+
+
+//passengers Prototype
+
+function Passenger (data) {
+
+    this.id = data.id;
+    this.name = data.name;
+    this.race = data.race;
+    this.age = data.age;
+    this.gender = data.gender;
+  }
+
+
+
+waiting_passengers = [
+
+   {
+    id: 1,
+    name: 'Mish',
+    race: 'brown',
+    age: 25,
+    gender: 1,
+  },
+
+  {
+    id: 2,
+    name: 'Bekezela',
+    race: 'brown',
+    age: 22,
+    gender: 0,
+  },
+
+ {
+    id: 3,
+    name: 'Greg',
+    race: 'blue',
+    age: 29,
+    gender: 1,
+  },
+
+  {
+    id: 4,
+    name: 'Malayka',
+    race: 'brown',
+    age: 22,
+    gender: 0,
+  },
+
+  {
+    id: 5,
+    name: 'Sipho',
+    race: 'brown',
+    age: 23,
+    gender: 1,
+  },
+
+ {
+    id: 6,
+    name: 'Mandy',
+    race: 'brown',
+    age: 20,
+    gender: 0,
+  }
+
+];
+
+
+mish_data = waiting_passengers[0];
+beke_data = waiting_passengers[1];
+greg_data = waiting_passengers[2];
+malyka_data = waiting_passengers[3];
+sipho_data = waiting_passengers[4];
+mandy_data = waiting_passengers[5];
+
+mish = new Passenger(mish_data);
+beke = new Passenger(beke_data);
+greg = new Passenger(greg_data);
+malyka = new Passenger(malyka_data);
+sipho = new Passenger(sipho_data);
+mandy = new Passenger(mandy_data);
+
+
+
+//Train Prototype
+
+function Train(info)
+  {
+    this.number = info.number;
+    this.direcion = info.direction;
+    this.daparture_time = info.departure_time;
+    this.arrival_time = info.arrival_time;
+    this.stops = info.stops;
+    this.capacity = info.capacity;
+    this.passengers = info.passengers;
+    this.board = function(passenger) {
+
+      if ( this.passengers.length >= this.capacity ){
+            console.log('Train full!');
+      }
+      else {
+            this.passengers.push(passenger);
+            for (let i = 0 ; i < waiting_passengers.length ; i++){
+                if ( waiting_passengers[i].id === passenger.id ){
+                   waiting_passengers.splice(i , 1);
+                }
+            }
+
+      }
+
+    }
+  }
+
+
+trains = [
+{
+    number: 1001,
+    direcion: 'South',
+    daparture_time: '08:00',
+    arrival_time: '09:20',
+    stops: 7,
+    capacity: 2,
+    passengers: [],
+
+  },
+
+  {
+    number: 3001,
+    direcion: 'North',
+    daparture_time: '08:10',
+    arrival_time: '09:05',
+    stops: 5,
+    capacity: 2,
+    passengers: [],
+
+  }
+
+];
+
+northTrain_info = trains[1];
+southTrain_info = trains[0];
+
+  northTrain = new Train(northTrain_info);
+  southTrain = new Train(southTrain_info);
+
+
+
+
+//we're fetching out raw data here now
+// const Mish = passengers[0];
+// const Bekezela = passengers[1];
+//const southTrain = trains[0];
+//let northTrain = trains[1];
+// southTrain.passengers.push(Mish);
+// southTrain.passengers.push(Bekezela);
+// let numPassengers = southTrain.passengers.length;
+
+//
+for (i = 0; i < waiting_passengers.length; i++){
+
+var p = waiting_passengers[i];
+
+  if(p.gender === 0){
+  southTrain.board(p);
+    }
+      else{
+        northTrain.board(p);
+      }
+
+};
+
+console.log(p);
+console.log(northTrain);
+console.log(southTrain);
+
+debugger;
+
+//
+// for (a = 0; a <)
+// console.log(southTrain);
+// console.log(northTrain);
+// console.log(all_passengers);
+
+</script>
